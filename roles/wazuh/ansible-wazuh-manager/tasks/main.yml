@@ -267,6 +267,9 @@
         executable: "{{ wazuh_dir }}/framework/python/bin/python3"
       with_items:
         - "{{ wazuh_api_users }}"
+      loop_control:
+        label: "{{ item.username }}"
+      no_log: "{{ wazuh_ansible_no_log }}"
 
   tags:
     - config_api_users
